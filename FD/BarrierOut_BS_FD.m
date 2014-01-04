@@ -47,6 +47,10 @@ if(isempty(indexL)==0)
 end
 
 if(exist('L','var'))
+    if S0<L
+        Price=0;
+        return
+    end
     Smin=L;
     r1=@(j) 0;
 else
@@ -54,6 +58,10 @@ else
 end
 
 if(exist('U','var'))
+    if S0>U
+        Price=0;
+        return
+    end
     Smax=U;
     r2=@(j) 0;
 else
@@ -85,6 +93,18 @@ else
 end
 
 V=max(FlagCP*(nodes-K),0);
+
+% if(exist('L','var'))  
+%     V=V*(S0>L)
+% end
+% 
+% if(exist('U','var'))
+%     V=V*(S0<U)
+% end
+
+
+
+
 %Implicit part matrix
 underdiag=-nodes*(r-d)/(2*dS)+0.5*sigma^2*nodes.^2/dS^2;
 BCund=-underdiag(1);

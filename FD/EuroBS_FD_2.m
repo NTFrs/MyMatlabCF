@@ -28,8 +28,8 @@ end
 
 ctheta=1-theta;
 
-Smin=S0*exp( (r-sigma^2/2)*T-sigma*sqrt(T)*6)
-Smax=S0*exp( (r-sigma^2/2)*T+sigma*sqrt(T)*6)
+Smin=S0*exp( (r-sigma^2/2)*T-sigma*sqrt(T)*6);
+Smax=S0*exp( (r-sigma^2/2)*T+sigma*sqrt(T)*6);
 
 S=linspace(Smin,Smax,N+1)'; dS=S(2)-S(1);
 t=linspace(0,T,M+1)'; dt=t(2)-t(1);
