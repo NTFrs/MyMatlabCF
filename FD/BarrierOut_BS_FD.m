@@ -1,5 +1,5 @@
 function Price=BarrierOut_BS_FD(S0,K,r,d,sigma,T,M,N,FlagCP,varargin)
-%EUROBS_FD_D Computes price of a knock out barrier option using DF
+%BARRIEROUT_BS_FD Computes price of a knock out barrier option using DF
 %
 %Computes price of a knock out barrier option  in B&S framework using a FD
 %method. By default it uses Crank-Nicolson algorithm for time
