@@ -22,7 +22,7 @@ function [Price,CI]=AsianBS_MC(S0,K,r,sigma,T,Nsim,FlagCP,FlagFloat,varargin)
 %Optional INPUTS:
 %..,'ConfidenceLevel',value,.... to specify confidence level
 %...,'Mean',string,... to specify if 'Ari' or 'Geo' mean
-%OUTPUT: Price and confidence interval at 95%
+%OUTPUT: Price and confidence interval at 1-alpha
 %
 %EXAMPLE:
 %   AsianBS_MC(100,105,0.03,0.4,1,1e6,1,-1,'Mode','Anti','Mean','Geo')
