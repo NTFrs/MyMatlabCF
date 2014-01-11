@@ -1,4 +1,4 @@
-function [S,t]=MCL_Merton(S0,gamma,sigma,lambda,jump_mu,jump_delta,T,Nsteps,Nsims)
+function [X,t]=MCL_Merton(gamma,sigma,lambda,jump_mu,jump_delta,T,Nsteps,Nsims)
 %MCL_MERTON simulates jump trajectory for a Kou JD Process till time T
 %
 %Usage [S,t]=MCL_Merton(S0,gamma,sigma,lambda,jump_mu,jump_delta,T,Nsteps,Nsims)
@@ -41,6 +41,5 @@ for i_sims=1:Nsims
     
 end
 
-S=S0*exp(X);
 
 end

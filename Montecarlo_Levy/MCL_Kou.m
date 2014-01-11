@@ -1,4 +1,4 @@
-function [S,t]=MCL_Kou(S0,gamma,sigma,lambda,lambda_u,lambda_d,p_up,T,Nsteps,Nsims)
+function [X,t]=MCL_Kou(gamma,sigma,lambda,lambda_u,lambda_d,p_up,T,Nsteps,Nsims)
 %MCL_KOU simulates jump trajectory for a Kou JD Process till time T
 %
 %
@@ -48,6 +48,5 @@ for i_sims=1:Nsims
     
 end
 
-S=S0*exp(X);
 
 end
