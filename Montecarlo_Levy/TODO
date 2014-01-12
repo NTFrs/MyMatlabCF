@@ -1,2 +1,4 @@
--) Add underlying simulation
-	-> Use it to price options in the same old way if possible
+-Check if the results are sensate
+-Add other options
+
+
