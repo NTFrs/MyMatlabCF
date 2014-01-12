@@ -2,7 +2,7 @@ function [X,t]=MCL_Kou(gamma,sigma,lambda,lambda_u,lambda_d,p_up,T,Nsteps,Nsims)
 %MCL_KOU simulates jump trajectory for a Kou JD Process till time T
 %
 %
-%Usage [S,t]=MCL_Kou(S0,gamma,sigma,lambda,lambda_u,lambda_d,p_up,T,Nsteps,Nsims)
+%Usage [S,t]=MCL_Kou(gamma,sigma,lambda,lambda_u,lambda_d,p_up,T,Nsteps,Nsims)
 %gamma JD drift
 %sigma diffusion coefficien
 %lambda jump intensity

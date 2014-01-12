@@ -1,7 +1,7 @@
 function [X,t]=MCL_VG(theta,sigma,kappa,T,Nsteps,Nsims)
 %MCL_VG Generates paths of a VG levy process
 %
-%usage MCL_VG((S0,sigma,eta,kappa,T,Nsteps,Nsims)
+%usage MCL_VG(S0,sigma,eta,kappa,T,Nsteps,Nsims)
 %
 %S0 asset value at time 0
 %theta brownian drift

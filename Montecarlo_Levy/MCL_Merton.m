@@ -1,7 +1,7 @@
 function [X,t]=MCL_Merton(gamma,sigma,lambda,jump_mu,jump_delta,T,Nsteps,Nsims)
 %MCL_MERTON simulates jump trajectory for a Kou JD Process till time T
 %
-%Usage [S,t]=MCL_Merton(S0,gamma,sigma,lambda,jump_mu,jump_delta,T,Nsteps,Nsims)
+%Usage [S,t]=MCL_Merton(gamma,sigma,lambda,jump_mu,jump_delta,T,Nsteps,Nsims)
 %gamma JD drift
 %sigma diffusion coefficien
 %lambda jump intensity
