@@ -1,6 +1,7 @@
 function [Price,CI]=AsianBS_MC(S0,K,r,sigma,T,Nsim,FlagCP,FlagFloat,varargin)
 %ASIANBS_MC Computes price of an asian option in BS framework with MC
 %
+%Usage [Price,CI]=AsianBS_MC(S0,K,r,sigma,T,Nsim,FlagCP,FlagFloat,...)
 %Computes price and confidence interval for an asiatic call or put using a
 %montecarlo method. User can specify if floating or fixed strike which type
 %of mean to use and what Montecarlo Method.
@@ -110,7 +111,7 @@ elseif Mode==1 %%%%%%%%%%%%Anti%%%%%%%%%%%%%%%
     
 else %%%%%%%%%%control%%%%%%%%%%%%%
     
-    smallN=Nsims/100;
+    smallN=Nsim/100;
     if FlagFloat==1
         
         %mean(S)(T) is control variable
@@ -130,7 +131,7 @@ else %%%%%%%%%%control%%%%%%%%%%%%%
         f=ComputeMean(S)-K;
         g=max(f,0)*exp(-r*T);
         
-        DiscPayoff=g-par*(f-EF);
+        DiscPayoff=g-par*(f-Ef);
         
     elseif FlagFloat==-1
         
@@ -152,7 +153,7 @@ else %%%%%%%%%%control%%%%%%%%%%%%%
         f=S(:,end)-ComputeMean(S);
         g=max(f,0)*exp(-r*T);
         
-        DiscPayoff=g-par*(f-EF);
+        DiscPayoff=g-par*(f-Ef);
         
         
     else
@@ -163,7 +164,7 @@ else %%%%%%%%%%control%%%%%%%%%%%%%
 end
 
 
-[Price,Dummy,IC]=normfit(DiscPayoff,alpha);
+[Price,Dummy,CI]=normfit(DiscPayoff,alpha);
 
 
 end

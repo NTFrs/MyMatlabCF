@@ -1,7 +1,7 @@
 function [Price]=FFT_Call(S0,Strike,r,T,M,charExp)
 
 %risk neutral function definition
-neutralExp=@(u) charExp(u)-charExp(-1i)*i*u;
+neutralExp=@(u) charExp(u)-charExp(-1i)*1i*u;
 charfunc=@(u) exp(T*neutralExp(u));
 
 N=2^M;
