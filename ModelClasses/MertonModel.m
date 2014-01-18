@@ -1,6 +1,8 @@
 classdef MertonModel < handle
-    %UNTITLED Summary of this class goes here
-    %   Detailed explanation goes here
+    %MERTONMODEL This class represents a marton model for Levy Processes
+    %A mertonModel Object can be used to simulate paths of the underlying
+    %or to return the characteristic exponent or levy density. The
+    %makeNeutral Method makes it neutral.
     
     properties
         
