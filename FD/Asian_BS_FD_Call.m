@@ -1,9 +1,7 @@
-function [Price]=Asian_BS_FD_Call(S0,r,sigma,T,M,N,Mode)
+function [Price]=Asian_BS_FD_Call(S0,r,sigma,T,M,N,Upwind)
 
-
-
-if (nargin<7)
-    Mode=0;
+if nargin <7
+    Upwind=0;
 end
 
 
@@ -16,12 +14,33 @@ R=linspace(0,Rmax,N+1)'; dR=R(2)-R(1);
 t=linspace(0,T,M+1)'; dt=t(2)-t(1);
 
 nodes=R(2:end-1);
-
-under=0.5*sigma^2*nodes.^2/dR^2 -(1 -r*nodes)/(2*dR);
-BCa=under(1);
-mid=-1/dt-sigma^2*nodes.^2/dR^2;
-upper=0.5*sigma^2*nodes.^2/dR^2 +(1 -r*nodes)/(2*dR);
-BCend=upper(end);
+if Upwind==0
+    
+    under=0.5*sigma^2*nodes.^2/dR^2 -(1 -r*nodes)/(2*dR);
+    BCa=under(1);
+    mid=-1/dt-sigma^2*nodes.^2/dR^2;
+    upper=0.5*sigma^2*nodes.^2/dR^2 +(1 -r*nodes)/(2*dR);
+    BCend=upper(end);
+    
+    
+    
+elseif Upwind==1
+    
+    under=0.5*sigma^2*nodes.^2/dR^2;
+    BCa=under(1);
+    mid=-1/dt-sigma^2*nodes.^2/dR^2-(1 -r*nodes)/dR;
+    upper=0.5*sigma^2*nodes.^2/dR^2 +(1 -r*nodes)/dR;
+    BCend=upper(end);
+    
+else
+    artDiff=abs(1-r*nodes)*dR/2;
+    under=(0.5*sigma^2*nodes.^2+artDiff)/dR^2 -(1 -r*nodes)/(2*dR);
+    BCa=under(1);
+    mid=-1/dt-(sigma^2*nodes.^2+2*artDiff)/dR^2;
+    upper=(0.5*sigma^2*nodes.^2+artDiff)/dR^2 +(1 -r*nodes)/(2*dR);
+    BCend=upper(end);
+    
+end
 
 tridiag=[ under, mid, upper ];
 A=spdiags(tridiag,1:-1:-1,N-1,N-1)';
@@ -33,7 +52,7 @@ AA(1,1)=-1/dt-1/dR; AA(1,2)=1/dR; AA(2,1)=BCa;
 V=max(1-R(1:end-1)/T,0);
 
 for j=1:M
-
+    
     V=AA\(-V/dt);
     
 end
