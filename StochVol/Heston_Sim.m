@@ -50,8 +50,10 @@ for i=1:Nsteps
     
     K0=-log(M)-(K1+0.5*K3)*V(:,i);
     
-    logX(:,i+1)=logX(:,i)+K0+K1*V(:,i)+K2*V(:,i+1)...
+    logX(:,i+1)=logX(:,i)+r*dt+K0+K1*V(:,i)+K2*V(:,i+1)...
         +sqrt(K3*V(:,i)+K4*V(:,i+1)).*gaus(:,i);
+%    logX(:,i+1)=logX(:,i)+K0+K1*V(:,i)+K2*V(:,i+1)...
+%        +sqrt(K3*V(:,i)+K4*V(:,i+1)).*gaus(:,i);
     
 end
 
