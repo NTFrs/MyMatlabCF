@@ -1,4 +1,7 @@
 function [X,V]=Heston_Sim(x0,v0,r,T,kappa,theta,eps,rho,Nsims,Nsteps,psicrit)
+%HESTON_SIM Simulates the dynamics of a Heston Stochastic volatility model
+%
+%Usage [X,V]=Heston_Sim(x0,v0,r,T,kappa,theta,eps,rho,Nsims,Nsteps,psicrit)
 
 if nargin < 11
     psicrit=1.5;
