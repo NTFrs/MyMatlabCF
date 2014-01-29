@@ -8,3 +8,6 @@
 
 # OSX / *nix default autosave extension
 *.m~
+
+# Scripts used to run functions
+my_runner*
