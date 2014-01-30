@@ -65,8 +65,6 @@ for j=M:-1:1
             elseif i==length(V)
                 z=(rhs(i)-A(i,i-1)*V(i-1))/A(i,i);
             else
-                
-                
                 z=(rhs(i)-A(i,i-1)*V(i-1)-A(i,i+1)*Vold(i+1))/A(i,i);
             end
             V(i)=max(FlagCP*(nodes(i)-K),Vold(i)+omega*(z-Vold(i)));
