@@ -62,7 +62,7 @@ elseif Mode==2
     f=S0*exp( (r-sigma^2/2)*T+sigma*sqrt(T)*randn(N,1));
     g=max(flag*(f-K),0)*exp(-r*T);
     
-    [Price,Dummy,CI]=normfit(g-par*(f-Ef),alpha);
+    [Price,Dummy,CI]=normfit(g+par*(f-Ef),alpha);
     
 else
     disp('Mode not reconigzed, consult help for more information');
