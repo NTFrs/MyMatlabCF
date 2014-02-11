@@ -17,7 +17,8 @@ if FlagPlot
         ind=index(1);
         S(ind+1:end)=S(ind+1:end)+1;
     end
+plot(t,S);
 end
 
-plot(t,S);
+
 end
