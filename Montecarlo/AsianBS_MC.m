@@ -116,9 +116,9 @@ else %%%%%%%%%%control%%%%%%%%%%%%%
         
         %mean(S)(T) is control variable
         if strcmp(varargin{indexT+1},'Geo')
-            Ef=1/T*exp(log(S0)*(r-0.5*sigma^2)*T^2/2+sigma^2*T^3/3);%%<---see note
+            Ef=1/T*exp(log(S0)*(r-0.5*sigma^2)*T^2/2+sigma^2*T^3/3)-K;%%<---see note
         else
-            Ef=S0*mean(exp(r*T/Nsteps*(1:Nsteps)));
+            Ef=S0*mean(exp(r*T/Nsteps*(1:Nsteps)))-K;
         end
         
         S=underlyngBS(S0,r,sigma,T,smallN,Nsteps);
@@ -131,7 +131,7 @@ else %%%%%%%%%%control%%%%%%%%%%%%%
         f=ComputeMean(S)-K;
         g=max(f,0)*exp(-r*T);
         
-        DiscPayoff=g-par*(f-Ef);
+        DiscPayoff=g+par*(f-Ef);
         
     elseif FlagFloat==-1
         
@@ -153,7 +153,7 @@ else %%%%%%%%%%control%%%%%%%%%%%%%
         f=S(:,end)-ComputeMean(S);
         g=max(f,0)*exp(-r*T);
         
-        DiscPayoff=g-par*(f-Ef);
+        DiscPayoff=g+par*(f-Ef);
         
         
     else
